@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.local/
+.playwright-cli/
+.runtime/
+.tmp/
+output/
+test-results/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.venv/
+**/__pycache__/
+**/node_modules/
+**/dist/
+*.egg-info/
+*.pyc
