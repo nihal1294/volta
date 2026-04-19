@@ -1,0 +1,9 @@
+[project]
+name = "volta-workspace"
+version = "0.1.0"
+description = "Workspace metadata for the Volta repository"
+requires-python = "==3.14.*"
+dependencies = []
+
+[tool.uv.workspace]
+members = ["apps/api"]

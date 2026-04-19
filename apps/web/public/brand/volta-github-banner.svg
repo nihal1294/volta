@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" fill="none">
+  <defs>
+    <linearGradient id="banner-bg" x1="112" y1="16" x2="1120" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C0A08" />
+      <stop offset="0.52" stop-color="#16120F" />
+      <stop offset="1" stop-color="#100D0B" />
+    </linearGradient>
+    <radialGradient id="banner-glow-gold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(188 108) rotate(34) scale(420 360)">
+      <stop stop-color="#B88848" stop-opacity="0.24" />
+      <stop offset="1" stop-color="#C59043" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="banner-glow-ivory" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1064 144) rotate(36) scale(340 320)">
+      <stop stop-color="#F3E6D4" stop-opacity="0.08" />
+      <stop offset="1" stop-color="#F3E6D4" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="mark-bg" x1="144" y1="148" x2="368" y2="388" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171513" />
+      <stop offset="1" stop-color="#22201C" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" rx="48" fill="url(#banner-bg)"/>
+  <rect width="1280" height="640" rx="48" fill="url(#banner-glow-gold)"/>
+  <rect width="1280" height="640" rx="48" fill="url(#banner-glow-ivory)"/>
+
+  <rect x="124" y="134" width="236" height="236" rx="76" fill="#E6D7BF" fill-opacity="0.05" stroke="#F5EEE4" stroke-opacity="0.1" stroke-width="4"/>
+  <rect x="148" y="158" width="188" height="188" rx="50" fill="url(#mark-bg)"/>
+  <path d="M194.3 282C213.5 282 226.1 269.2 226.1 248V204.3" stroke="#DDB16B" stroke-width="17.4" stroke-linecap="round"/>
+  <path d="M250.7 314.2C274.5 314.2 287.6 296.8 287.6 271.5V204.3" stroke="#6482FF" stroke-width="17.4" stroke-linecap="round"/>
+  <circle cx="235.5" cy="316.3" r="13" fill="#F5EEE4"/>
+
+  <text x="430" y="232" fill="#F5EEE4" font-size="102" font-family="Iowan Old Style, Baskerville, Georgia, serif" font-weight="700" letter-spacing="-2">Volta</text>
+  <text x="434" y="286" fill="#D7CBB9" font-size="28" font-family="Avenir Next, Inter, system-ui, sans-serif" font-weight="500">Local realtime voice orchestration</text>
+
+  <g font-family="Avenir Next, Inter, system-ui, sans-serif" font-size="20" font-weight="600">
+    <rect x="434" y="344" width="192" height="44" rx="22" fill="#F5EEE4" fill-opacity="0.06" stroke="#F5EEE4" stroke-opacity="0.08"/>
+    <text x="530" y="372" fill="#F5EEE4" text-anchor="middle">STT → LLM → TTS</text>
+    <rect x="640" y="344" width="136" height="44" rx="22" fill="#B88848" fill-opacity="0.14" stroke="#D7AA70" stroke-opacity="0.18"/>
+    <text x="708" y="372" fill="#F5EEE4" text-anchor="middle">Persona</text>
+    <rect x="790" y="344" width="126" height="44" rx="22" fill="#F5EEE4" fill-opacity="0.06" stroke="#F5EEE4" stroke-opacity="0.08"/>
+    <text x="853" y="372" fill="#F5EEE4" text-anchor="middle">Barge-in</text>
+    <rect x="930" y="344" width="112" height="44" rx="22" fill="#F5EEE4" fill-opacity="0.06" stroke="#F5EEE4" stroke-opacity="0.08"/>
+    <text x="986" y="372" fill="#F5EEE4" text-anchor="middle">Runs</text>
+  </g>
+
+  <text x="434" y="438" fill="#B8A995" font-size="22" font-family="Avenir Next, Inter, system-ui, sans-serif">
+    Premium local orchestration for persona-aware voice agents on Apple Silicon.
+  </text>
+</svg>

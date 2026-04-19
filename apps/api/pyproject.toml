@@ -1,0 +1,29 @@
+[project]
+name = "volta-api"
+version = "0.1.0"
+description = "Volta backend for realtime STT, LLM, and TTS orchestration"
+requires-python = "==3.14.*"
+dependencies = [
+  "fastapi==0.136.0",
+  "httpx==0.28.1",
+  "numpy==2.4.4",
+  "sphn==0.2.1",
+  "uvicorn[standard]==0.44.0",
+  "websockets==16.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+  "ruff==0.15.11",
+]
+
+[project.scripts]
+volta-api = "volta_api.app:main"
+
+[build-system]
+requires = ["setuptools==69.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
