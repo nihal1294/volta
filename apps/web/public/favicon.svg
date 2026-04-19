@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="volta-favicon-bg" x1="7" y1="6" x2="57" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171513" />
+      <stop offset="1" stop-color="#22201C" />
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="17.5" fill="#E6D7BF" fill-opacity="0.06" stroke="#F5EEE4" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#volta-favicon-bg)"/>
+  <path d="M18.8 40.3C24.1 40.3 27.6 36.8 27.6 30.9V18.8" stroke="#DDB16B" stroke-width="4.8" stroke-linecap="round"/>
+  <path d="M34.4 43.2C41 43.2 44.6 38.4 44.6 31.4V18.8" stroke="#6482FF" stroke-width="4.8" stroke-linecap="round"/>
+  <circle cx="30.2" cy="43.8" r="3.8" fill="#F5EEE4"/>
+</svg>
