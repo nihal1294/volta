@@ -37,7 +37,7 @@ volta/
 
 - Python `3.14+`
 - [uv](https://docs.astral.sh/uv/)
-- Node.js `18+`
+- Node.js `20.19+` (20.x) or `22.12+`
 - npm
 - `just` is recommended, but not strictly required
 
@@ -149,6 +149,13 @@ Override it if needed:
 cd apps/web
 VITE_VOLTA_WS_URL=ws://127.0.0.1:8765/v1/realtime npm run dev -- --host 127.0.0.1 --port 4173 --strictPort
 ```
+
+Browser HTTP and WebSocket requests use the explicit `ALLOWED_ORIGINS` list in
+the backend environment. The defaults allow localhost and `127.0.0.1` on ports
+4173 and 4174. When serving the frontend from another origin, add its complete
+HTTP(S) origin to this comma-separated list. Native WebSocket clients that omit
+the Origin header continue to work. This browser-origin check does not replace
+authentication for a backend exposed outside the local machine.
 
 ## Saved Runs
 

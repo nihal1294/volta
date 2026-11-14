@@ -4,6 +4,36 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
+from urllib.parse import urlsplit
+
+
+DEFAULT_ALLOWED_ORIGINS = (
+    "http://127.0.0.1:4173",
+    "http://127.0.0.1:4174",
+    "http://localhost:4173",
+    "http://localhost:4174",
+)
+
+
+def _parse_origins(value: str) -> tuple[str, ...]:
+    origins = tuple(dict.fromkeys(part.strip() for part in value.split(",")))
+    for origin in origins:
+        parsed = urlsplit(origin)
+        if (
+            parsed.scheme not in {"http", "https"}
+            or not parsed.hostname
+            or "*" in origin
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.path
+            or parsed.query
+            or parsed.fragment
+            or origin != f"{parsed.scheme}://{parsed.netloc}"
+        ):
+            raise ValueError("ALLOWED_ORIGINS must contain complete HTTP(S) origins")
+        # Accessing port also rejects non-numeric or out-of-range values.
+        parsed.port
+    return origins
 
 
 def _load_dotenv(path: Path) -> dict[str, str]:
@@ -106,6 +136,7 @@ class Settings:
     tts_chunk_min_split: int
     host: str
     port: int
+    allowed_origins: tuple[str, ...] = DEFAULT_ALLOWED_ORIGINS
 
     @property
     def use_openai_provider(self) -> bool:
@@ -451,6 +482,15 @@ class Settings:
                     "PORT",
                     "VOLTA_PORT",
                     default="8765",
+                )
+            ),
+            allowed_origins=_parse_origins(
+                _config_get(
+                    env_values,
+                    dotenv_values,
+                    "ALLOWED_ORIGINS",
+                    "VOLTA_ALLOWED_ORIGINS",
+                    default=",".join(DEFAULT_ALLOWED_ORIGINS),
                 )
             ),
         )

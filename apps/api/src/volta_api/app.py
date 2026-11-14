@@ -111,12 +111,7 @@ async def lifespan(_: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:4173",
-        "http://127.0.0.1:4174",
-        "http://localhost:4173",
-        "http://localhost:4174",
-    ],
+    allow_origins=list(settings.allowed_origins),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -263,8 +258,18 @@ async def run_detail_v1(session_id: str) -> dict[str, object]:
     }
 
 
+async def _allow_websocket_origin(websocket: WebSocket) -> bool:
+    origins = websocket.headers.getlist("origin")
+    if not origins or (len(origins) == 1 and origins[0] in settings.allowed_origins):
+        return True
+    await websocket.close(code=1008)
+    return False
+
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
+    if not await _allow_websocket_origin(websocket):
+        return
     await websocket.accept()
     session = Session(websocket, settings, workers)
     try:
@@ -284,6 +289,8 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
 
 @app.websocket("/v1/realtime")
 async def realtime_endpoint(websocket: WebSocket) -> None:
+    if not await _allow_websocket_origin(websocket):
+        return
     subprotocols = websocket.scope.get("subprotocols", [])
     accepted_subprotocol = "realtime" if "realtime" in subprotocols else None
     await websocket.accept(subprotocol=accepted_subprotocol)
